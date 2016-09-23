@@ -15,7 +15,6 @@ parser.add_option("-d", "--docker_location", dest="docker_image_location",
 
 (options, args)= parser.parse_args()
 print options
-exit(1)
 cmd = "sudo apt-get update"
 proc= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 while proc.poll() is None:
