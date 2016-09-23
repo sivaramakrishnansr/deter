@@ -4,3 +4,4 @@ password-fill_here
 exp_name-fill_here
 project_name-fill_here
 number_of_containers-fill_here
+docker_image_location-/proj/SENSS/dk.agent.latest.tar
