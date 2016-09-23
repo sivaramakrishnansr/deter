@@ -1,0 +1,51 @@
+set ns [new Simulator]
+source tb_compat.tcl
+# Nodes
+
+
+set attacker [$ns node]
+tb-set-node-os $attacker Ubuntu1404-64-STD
+set hosting1 [$ns node]
+tb-set-node-os $hosting1 Ubuntu1404-64-STD
+set hosting2 [$ns node]
+tb-set-node-os $hosting2 Ubuntu1404-64-STD
+set hosting3 [$ns node]
+tb-set-node-os $hosting3 Ubuntu1404-64-STD
+set univ1 [$ns node]
+tb-set-node-os $univ1 Ubuntu1404-64-STD
+set univ2 [$ns node]
+tb-set-node-os $univ2 Ubuntu1404-64-STD
+set univ3 [$ns node]
+tb-set-node-os $univ3 Ubuntu1404-64-STD
+set target [$ns node]
+tb-set-node-os $target Ubuntu1404-64-STD
+set router1 [$ns node]
+tb-set-node-os $router1 Ubuntu1404-64-STD
+set router2 [$ns node]
+tb-set-node-os $router2 Ubuntu1404-64-STD
+set router3 [$ns node]
+tb-set-node-os $router3 Ubuntu1404-64-STD
+set router4 [$ns node]
+tb-set-node-os $router4 Ubuntu1404-64-STD
+
+
+#Links
+
+set link1 [$ns duplex-link $attacker $router1 100Mb 0ms DropTail]
+set link2 [$ns duplex-link $attacker $router2 100Mb 0ms DropTail]
+set link3 [$ns duplex-link $router1 $hosting1 100Mb 0ms DropTail]
+set link4 [$ns duplex-link $router1 $hosting2 100Mb 0ms DropTail]
+set link5 [$ns duplex-link $router1 $hosting3 100Mb 0ms DropTail]
+set link6 [$ns duplex-link $router2 $univ1 100Mb 0ms DropTail]
+set link7 [$ns duplex-link $router2 $univ2 100Mb 0ms DropTail]
+set link8 [$ns duplex-link $router2 $univ3 100Mb 0ms DropTail]
+set link9 [$ns duplex-link $hosting1 $router3 100Mb 0ms DropTail]
+set link10 [$ns duplex-link $hosting2 $router3 100Mb 0ms DropTail]
+set link11 [$ns duplex-link $hosting3 $router3 100Mb 0ms DropTail]
+set link12 [$ns duplex-link $univ1 $router4 100Mb 0ms DropTail]
+set link13 [$ns duplex-link $univ2 $router4 100Mb 0ms DropTail]
+set link14 [$ns duplex-link $univ3 $router4 100Mb 0ms DropTail]
+set link15 [$ns duplex-link $router3 $target 100Mb 0ms DropTail]
+set link16 [$ns duplex-link $router4 $target 100Mb 0ms DropTail]
+$ns rtproto Manual
+$ns run
