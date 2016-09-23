@@ -16,13 +16,15 @@ for line in f:
                 n=line.strip().split("-")[1]
         if "docker_image_location" in line:
                 docker_image_location=line.strip().split("-")[1]
+        if "docker_setup" in line:
+                docker_setup_location=line.strip().split("-")[1]
 failed=[]
 i=20
 for host in hosts:
         try:
                 url=host+"."+exp_name+"."+project_name
                 print url
-                command_to_execute="sudo python /proj/SENSS/docker_setup.py -n "+str(n)+" -s "+str(i)+".0.0.1/16"+" -d "+docker_image_location
+                command_to_execute="sudo python "+docker_setup_location+"  -n "+str(n)+" -s "+str(i)+".0.0.1/16"+" -d "+docker_image_location
                 print command_to_execute
                 ssh = paramiko.SSHClient()
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
