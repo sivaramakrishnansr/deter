@@ -1,4 +1,3 @@
-#Script to setup docker on Ubuntu 14.04
 import os
 import subprocess
 import sys
@@ -62,16 +61,8 @@ for i in range(1,int(options.number)+1):
 
 print("\nCreating Containers...")
 for x in hosts:
+	
 	cmd = "sudo docker run -itd -v /users/svshanka/flooder:/flooder --privileged --name="+ x + " svshanka/my-ubuntu:latest /bin/bash"
 	proc= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 	proc.wait()
 	print("Container " + x + " UP!")
-
-
-
-
-
-
-
-
-
