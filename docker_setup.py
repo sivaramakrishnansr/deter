@@ -9,7 +9,13 @@ parser.add_option("-n", "--num", dest="number",
 
 parser.add_option("-s", "--subnet", dest="subnet", 
         help="The ip addresses of containers are assigned from this subnet. Ex. 172.20.0.1/16")
+
+parser.add_option("-d", "--docker_location", dest="docker_image_location", 
+        help="Location of the Docker Image")
+
 (options, args)= parser.parse_args()
+print options
+exit(1)
 cmd = "sudo apt-get update"
 proc= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 while proc.poll() is None:
@@ -50,7 +56,7 @@ os.system("sudo start docker")
 
 
 print("\nLoading the Image... ")
-cmd = "sudo docker load < /proj/SENSS/dk.agent.latest.tar"
+cmd = "sudo docker load < "+options.docker_image_location
 proc= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 proc.wait()
 proc= subprocess.Popen("sudo docker images", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
