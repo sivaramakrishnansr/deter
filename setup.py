@@ -1,3 +1,4 @@
+#Script to setup docker on Ubuntu 14.04
 import os
 import subprocess
 import sys
